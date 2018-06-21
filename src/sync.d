@@ -111,6 +111,9 @@ private bool testFileHash(string path, const ref Item item)
 	} else if (item.sha1Hash) {
 		if (item.sha1Hash == computeSha1Hash(path)) return true;
 	} else if (item.quickXorHash) {
+	
+		log.vlog("Item hash: ", item.quickXorHash);
+	
 		if (item.quickXorHash == computeQuickXorHash(path)) return true;
 	}
 	return false;

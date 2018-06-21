@@ -72,6 +72,16 @@ string computeQuickXorHash(string path)
 	foreach (ubyte[] data; chunks(file, 4096)) {
 		qxor.put(data);
 	}
+	
+	// Debugging
+	auto original = Base64.encode(qxor.finish());
+	auto testing1 = Base64URL.encode(qxor.finish());
+	auto testing2 = Base64URLNoPadding.encode(qxor.finish());
+	
+	writeln("Original: ", original);
+	writeln("Testing1: ", testing1);
+	writeln("Testing2: ", testing2);
+	
 	return Base64.encode(qxor.finish());
 }
 
